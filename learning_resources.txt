@@ -1,4 +1,8 @@
+--sql
 
+-- data modelling
+
+-- elt (or etl)
 
 -- Luigi
 -- lightweight, easier to learn - somewhat old fashioned now 
