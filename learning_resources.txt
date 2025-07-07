@@ -9,4 +9,10 @@
 
 https://github.com/spotify/luigi
 
+Pycon 2017 - 3 hrs
+https://www.youtube.com/watch?v=jpkZGXrhZJ8&t=505s
+
+Pydata 2018 - 90 mins
+https://www.youtube.com/watch?v=jRkW5Uf58K4
+
 
