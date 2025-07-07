@@ -4,6 +4,12 @@
 
 -- elt (or etl)
 
+Pre-reqs:
+Python, GIT, some form of editor like VSCode 
+
+Nice-to-haves:
+an idea about Pandas (or alternatives like Polar)
+
 -----------
 -- Luigi --
 -----------
