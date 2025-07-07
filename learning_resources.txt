@@ -9,6 +9,7 @@
 -----------
 
 -- lightweight, easier to learn - somewhat old fashioned now 
+-- modern alternatives: dagster, prefect.io, airflow
 
 https://github.com/spotify/luigi
 
