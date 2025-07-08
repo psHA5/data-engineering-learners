@@ -16,6 +16,7 @@ an idea about Pandas (or alternatives like Polar)
 
 -- lightweight, easier to learn - somewhat old fashioned now 
 -- modern alternatives: nifi, dagster, prefect.io, airflow
+-- dagster has a free learning program - dagster university
 
 https://github.com/spotify/luigi
 
@@ -25,4 +26,14 @@ https://www.youtube.com/watch?v=jpkZGXrhZJ8&t=505s
 Pydata 2018 - 90 mins
 https://www.youtube.com/watch?v=jRkW5Uf58K4
 
+----------------
+-- postgresql --
+----------------
+
+EDB have a free learning program which is very good - it is for open source as well as their version
+
+
+------------
+-- OTHERS --
+------------
 
