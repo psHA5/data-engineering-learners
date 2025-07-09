@@ -26,6 +26,14 @@ https://www.youtube.com/watch?v=jpkZGXrhZJ8&t=505s
 Pydata 2018 - 90 mins
 https://www.youtube.com/watch?v=jRkW5Uf58K4
 
+---------------------
+-- datawarehousing --
+---------------------
+
+-- snowflake
+-- google's bigquery
+-- aws' redshift
+
 ----------------
 -- postgresql --
 ----------------
