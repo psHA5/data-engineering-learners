@@ -31,7 +31,7 @@ https://www.youtube.com/watch?v=jRkW5Uf58K4
 ----------------
 
 EDB have a free learning program which is very good - it is for open source as well as their version
-
+https://www.enterprisedb.com/training/on-demand
 
 ------------
 -- OTHERS --
