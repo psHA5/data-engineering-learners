@@ -34,3 +34,32 @@ Status:       Not Subscribed
 Unable to find available subscriptions for all your installed products.
 [peter@localhost ~]$
 
+
+
+[peter@localhost ~]$ sudo rhc connect
+[sudo] password for peter:
+Connecting localhost.localdomain to Red Hat.
+This might take a few seconds.
+
+● This system is already connected to Red Hat Subscription Management
+/ Connecting to Red Hat Insights...^Z
+[1]+  Stopped                 sudo rhc connect
+[peter@localhost ~]$ sudo rhc connect -u peterschofield@live.com -p Gromit123!rhel
+-bash: !rhel: event not found
+[peter@localhost ~]$ sudo rhc connect
+Connecting localhost.localdomain to Red Hat.
+This might take a few seconds.
+
+● This system is already connected to Red Hat Subscription Management
+! Cannot connect to Red Hat Insights
+● Activated the Remote Host Configuration daemon
+
+Manage your connected systems: https://red.ht/connector
+
+The following errors were encountered during connect:
+
+TYPE   STEP      ERROR
+ERROR  insights  cannot connect to Red Hat Insights: exit status 1
+[peter@localhost ~]$
+
+
