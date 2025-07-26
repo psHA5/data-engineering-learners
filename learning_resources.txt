@@ -45,3 +45,5 @@ https://www.enterprisedb.com/training/on-demand
 -- OTHERS --
 ------------
 
+Ansible - configuration management from RedHAT
+-- sign up to Red Hat's 90 day free trial of their learning subscription
