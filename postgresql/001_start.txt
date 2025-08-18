@@ -1,0 +1,51 @@
+Postgres Architecture:
+
+process, not threads
+postmaster process is a supervisor
+	several utility processes run background work, postmaster starts them, restarts them if they die
+one backend process per user session
+	postmaster listens for new connections
+
+Process & Memory Arcitechure
+when postmaster starts, Shared Memory is created: shared buffers, WAL buffers, Process Array
+BG writer  - writes dirty pages to disk
+WAL Writer - 
+Checkpointer - all changes are in the data pages
+Logger
+Archiver - archives WAL files to archive area
+Logical replication
+
+
+Commands:
+
+ps -ef | grep postgres
+
+ps -ef | grep ID
+
+psql postgres postgres
+
+select pg_backend_pid();
+
+Utility processes:
+
+background writer - writes dirty data blocks to disk
+WAL write - flushes write-ahead log to disk
+Checkpointer - automatically performs a checkpoint based on config parameters
+Logging collector - routes log messages to syslog, eventlog, or log files
+Autovacuum launcher - starts workers as needed
+Autovacuum workers - recover free space for reuse
+Archiver - archives write-ahead log files
+Logical replication launcher - 
+
+
+Postmaster is the main process called postgres, and also listens on just one tcp port
+for each connection request, a new process called postgres is created. Authorization - very permissions, IP verification against hba.conf. Pwd check
+Call back to client, waiting for SQL
+
+Disk read buffering - is the data in share memory, else disk IO read. Read the block once, examine it many times in cache
+Writes - blocks are written to disk only when needed - to make room for new blocks, or checkpoint
+
+Write-ahead logging : transaction logging
+back end write data to WAL buffers
+Flush WAL buffers on commit, or when buffers are full
+Uncommitted updates are in memory. When commit, the WAL buffers are written to disk
