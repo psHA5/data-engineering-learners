@@ -22,6 +22,7 @@ ps -ef | grep postgres
 
 ps -ef | grep ID
 
+-- with peer authentication, your OS user must match the db user!
 psql postgres postgres
 
 select pg_backend_pid();
