@@ -1,2 +1,5 @@
 -- where are the logs?
 show log_destination ;
+
+-- show active processes
+SELECT * FROM pg_stat_activity;
