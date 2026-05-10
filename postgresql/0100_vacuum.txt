@@ -7,6 +7,33 @@ FROM pg_database
 ORDER BY xid_age DESC;
 
 
+-- decision tree: 2am call, table is bloated
+
+--confirm if bloat is real
+SELECT n_live_tup, n_dead_tup, last_autovacuum
+FROM pg_stat_user_tables
+WHERE relname = 'x';
+
+--Check if autovacuum is running on the table
+SELECT *
+FROM pg_stat_progress_vacuum
+WHERE relid = 'x'::regclass;
+
+-- check if the xmin horizon is stuck
+SELECT pid, state, age(backend_xmin), query
+FROM pg_stat_activity
+WHERE backend_xmin IS NOT NULL
+ORDER BY backend_xmin
+LIMIT 5;
+
+--manul rescue aggressive settings
+SET vacuum_cost_limit = 10000;
+SET maintenance_work_mem = '2GB';
+VACUUM (VERBOSE, ANALYZE) x_table;
+REINDEX INDEX CONCURRENTLY 
+
+
+
 -- Production rule: Alert on transactions open > 5 min, inactive replication slots, and backend_xmin age > 100M XIDs.
 
 -- who is holding the xmin horizon back?
