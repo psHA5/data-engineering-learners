@@ -30,3 +30,13 @@ autovacuum_vacuum_cost_delay = 2
 autovacuum_max_workers = 10
 autovacuum_freeze_max_age = 100000000
 maintenance_work_mem = 512MB
+
+SETTING	                     DEFAULT	EFFECT	RECOMMENDED
+autovacuum_vacuum_scale_factor	0.2	       Percentage of dead tuples required to trigger vacuum	0.02–0.05 for large tables
+autovacuum_vacuum_cost_limit	200	       I/O budget per vacuum cycle	2000–4000 on modern SSDs
+autovacuum_vacuum_cost_delay	2ms	       Pause between vacuum cycles	2ms (usually fine)
+autovacuum_naptime	              1min	       How often the launcher wakes up	15s for busy systems
+autovacuum_max_workers	       3	       Number of concurrent vacuum workers	5–10 on multi‑core servers
+autovacuum_freeze_max_age	       200,000,000	Anti‑wraparound threshold	100,000,000 on busy systems
+maintenance_work_mem	              64MB	       Memory per worker for dead tuple processing	512MB–2GB
+vacuum_freeze_min_age	       50,000,000	Age at which tuples become eligible for freezing	Keep default unless emergency
