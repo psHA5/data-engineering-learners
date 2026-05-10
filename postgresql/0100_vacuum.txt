@@ -12,3 +12,21 @@ LIMIT 10;
 SELECT slot_name, active, age(xmin) AS xmin_age
 FROM pg_replication_slots
 ORDER BY xmin_age DESC;
+
+
+-- per table override for hot tables
+ALTER TABLE events SET (
+  autovacuum_vacuum_scale_factor = 0.01,
+  autovacuum_vacuum_threshold = 10000,
+  autovacuum_vacuum_cost_limit = 4000
+);
+
+
+
+# postgresql.conf
+autovacuum_vacuum_scale_factor = 0.05
+autovacuum_vacuum_cost_limit = 2000
+autovacuum_vacuum_cost_delay = 2
+autovacuum_max_workers = 10
+autovacuum_freeze_max_age = 100000000
+maintenance_work_mem = 512MB
