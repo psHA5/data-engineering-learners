@@ -1,3 +1,12 @@
+--50 % = weeks to act, 90 % = all‑hands, 95 %+ = critical.
+SELECT datname,
+       age(datfrozenxid) AS xid_age,
+       pg_size_pretty(pg_database_size(datname)) AS size,
+       round(100 * age(datfrozenxid)::numeric / 2000000000, 1) AS pct_to_emergency
+FROM pg_database
+ORDER BY xid_age DESC;
+
+
 -- Production rule: Alert on transactions open > 5 min, inactive replication slots, and backend_xmin age > 100M XIDs.
 
 -- who is holding the xmin horizon back?
