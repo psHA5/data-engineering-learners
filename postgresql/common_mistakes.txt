@@ -16,4 +16,23 @@ eg BETWEEN 1 AND 100
 
 -- it's inclusive, so shouild be explicit using a where
 
+------
+
+Uppercase identifies
+
+Postgres makes everything lowercase unless you double quote it
+
+eg CREATE TABLE Customers
+or CREATE TABLE "Invoices"
+
+using it
+
+TABLE Customers - returns select * from ....
+
+TABLE "Customers" - fails as it is really customers
+
+For pretty column names in reports, use:
+
+select amount as "Reconciliation Amount" ....
+
 
