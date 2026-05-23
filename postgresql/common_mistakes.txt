@@ -9,3 +9,11 @@ Can be ok if you know there are no nulls eg NOT IN (1,34,5,7)
 
 Instead, should use not exists (select .... ) and col is not null;
 
+-----
+
+Selecting ranges with BETWEEN
+eg BETWEEN 1 AND 100
+
+-- it's inclusive, so shouild be explicit using a where
+
+
