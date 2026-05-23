@@ -1,0 +1,11 @@
+
+
+Using NOT IN to exclude
+such as: select... where.... not in (select..._)
+It doesn't work the way you expect
+
+Nulls throw this, but even if there are no nulls - subplan instead of an anti-join - so a problem for query planning
+Can be ok if you know there are no nulls eg NOT IN (1,34,5,7)
+
+Instead, should use not exists (select .... ) and col is not null;
+
