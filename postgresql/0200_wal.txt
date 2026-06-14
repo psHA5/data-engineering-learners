@@ -1,0 +1,19 @@
+-- production systems should be 4-16GB
+max_wal_save = 1GB
+
+checkpoint_timeout = '15min'
+
+
+checkpoint_completion_target = 0.9
+
+
+
+-- monitoring
+
+views:
+pg_stat_wal
+pg_stat_checkpointer
+pg_stat_bgwriter
+
+
+
