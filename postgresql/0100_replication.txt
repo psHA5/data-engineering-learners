@@ -1,3 +1,6 @@
+------------------------------------------------------------------------------------------
+Primary:
+
 1. postgresql.conf on the primary
 
 wal_level = replica
@@ -18,4 +21,41 @@ CREATE ROLE replicator WITH REPLICATION LOGIN PASSWORD 'yourpass';
 SELECT pg_reload_conf();
 
 ----------------------------------------------------------------------------------------
+Replica:
 
+1. stop postgres
+systemctl stop postgresql
+
+2. remove the data directory, as we need a clean data directory
+rm -rf /var/lib/postgresql/17/main/*
+
+3. take a base backup
+pg_basebackup -h <primary_ip> -U replicator -D $PGDATA -Fp -Xs -P
+
+4. create a standby signal
+touch $PGDATA/standby.signal
+
+5. edit the postgresql.conf
+
+primary_conninfo = 'host=<primary_ip> user=replicator password=yourpass'
+primary_slot_name = 'replica1'
+
+6. create the slot on the PRIMARY
+
+SELECT * FROM pg_create_physical_replication_slot('replica1');
+
+7. start the replica
+
+systemctl start postgresql
+
+8. check on the PRIMARY
+
+SELECT * FROM pg_stat_replication;
+
+9. check on the REPLICA:
+
+SELECT pg_is_in_recovery();
+
+10. Check on the PRIMARY:
+
+SELECT client_addr, state FROM pg_stat_replication;
