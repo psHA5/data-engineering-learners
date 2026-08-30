@@ -1,0 +1,21 @@
+1. postgresql.conf on the primary
+
+wal_level = replica
+max_wal_senders = 10
+max_replication_slots = 10
+wal_keep_size = 512MB
+
+2. pg_hba.conf
+
+host replication <replication_user> <replica_ip>/32 scram-sha-256
+
+3. create a replication user
+
+CREATE ROLE replicator WITH REPLICATION LOGIN PASSWORD 'yourpass';
+
+4. reload
+
+SELECT pg_reload_conf();
+
+----------------------------------------------------------------------------------------
+
