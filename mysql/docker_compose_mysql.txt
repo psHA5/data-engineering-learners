@@ -1,0 +1,55 @@
+services:
+  mysql-primary:
+    image: mysql:8.4
+    container_name: mysql-primary
+    hostname: mysql-primary
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - primary_data:/var/lib/mysql
+      - ./primary.cnf:/etc/mysql/conf.d/custom.cnf
+      - ./init-primary.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mysqlnet
+
+  mysql-replica1:
+    image: mysql:8.4
+    container_name: mysql-replica1
+    hostname: mysql-replica1
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - replica1_data:/var/lib/mysql
+      - ./replica1.cnf:/etc/mysql/conf.d/custom.cnf
+    depends_on:
+      - mysql-primary
+    networks:
+      - mysqlnet
+
+  mysql-replica2:
+    image: mysql:8.4
+    container_name: mysql-replica2
+    hostname: mysql-replica2
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3308:3306"
+    volumes:
+      - replica2_data:/var/lib/mysql
+      - ./replica2.cnf:/etc/mysql/conf.d/custom.cnf
+    depends_on:
+      - mysql-primary
+    networks:
+      - mysqlnet
+
+networks:
+  mysqlnet:
+
+volumes:
+  primary_data:
+  replica1_data:
+  replica2_data:
