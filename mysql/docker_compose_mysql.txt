@@ -6,7 +6,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpass
     ports:
-      - "3306:3306"
+      - "3309:3306"
     volumes:
       - primary_data:/var/lib/mysql
       - ./primary.cnf:/etc/mysql/conf.d/custom.cnf
