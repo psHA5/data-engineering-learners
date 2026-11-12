@@ -1,0 +1,14 @@
+services:
+  orchestrator:
+    image: openarkcode/orchestrator:latest
+    container_name: orchestrator
+    ports:
+      - "3000:3000"
+    networks:
+      - mysqlnet
+
+networks:
+  mysqlnet:
+    external: true
+    name: mysql_mysqlnet
+    
