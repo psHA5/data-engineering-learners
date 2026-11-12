@@ -1,0 +1,10 @@
+CREATE USER 'orc_client_user'@'%'
+IDENTIFIED BY 'orcpass';
+
+GRANT PROCESS,
+      REPLICATION SLAVE,
+      REPLICATION CLIENT,
+      RELOAD
+ON *.* TO 'orc_client_user'@'%';
+
+FLUSH PRIVILEGES;
