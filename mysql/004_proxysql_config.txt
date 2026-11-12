@@ -1,0 +1,23 @@
+-- in the container, connected to mysql
+
+
+INSERT INTO mysql_servers (
+    hostgroup_id,
+    hostname,
+    port
+)
+VALUES (
+    10,
+    'mysql-primary',
+    3306
+);
+
+
+INSERT INTO mysql_servers (
+    hostgroup_id,
+    hostname,
+    port
+)
+VALUES
+(20,'mysql-replica1',3306),
+(20,'mysql-replica2',3306);
