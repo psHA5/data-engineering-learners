@@ -1,6 +1,9 @@
 -- in the container, connected to mysql
 
+-- test
+SELECT * FROM mysql_servers;
 
+-- add config
 INSERT INTO mysql_servers (
     hostgroup_id,
     hostname,
@@ -21,3 +24,17 @@ INSERT INTO mysql_servers (
 VALUES
 (20,'mysql-replica1',3306),
 (20,'mysql-replica2',3306);
+
+
+
+
+INSERT INTO mysql_users (
+    username,
+    password,
+    default_hostgroup
+)
+VALUES (
+    'root',
+    'rootpass',
+    10
+);
