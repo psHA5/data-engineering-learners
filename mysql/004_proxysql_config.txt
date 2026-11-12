@@ -45,3 +45,7 @@ SAVE MYSQL SERVERS TO DISK;
 
 LOAD MYSQL USERS TO RUNTIME;
 SAVE MYSQL USERS TO DISK;
+
+
+SET mysql-monitor_username='root';
+SET mysql-monitor_password='rootpass';
