@@ -1,3 +1,4 @@
+--server
 docker volume create pmm-data
 sudo docker run -d \
   -p 80:80 -p 443:443 \
@@ -6,6 +7,12 @@ sudo docker run -d \
   --restart always \
   percona/pmm-server:2
 
+--client
+
+sudo docker run -d \
+  --name pmm-client \
+  --network mysql_mysqlnet \
+  percona/pmm-client:3
 
 
 -- mysql monitored servers
