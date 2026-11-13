@@ -6,3 +6,15 @@ sudo docker run -d \
   --restart always \
   percona/pmm-server:2
 
+
+
+-- mysql monitored servers
+
+CREATE USER 'pmm'@'%' IDENTIFIED BY 'password';
+
+GRANT SELECT, PROCESS, REPLICATION CLIENT ON *.* TO 'pmm'@'%';
+
+GRANT SELECT ON performance_schema.* TO 'pmm'@'%';
+
+FLUSH PRIVILEGES;
+
