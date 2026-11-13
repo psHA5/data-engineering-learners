@@ -1,6 +1,8 @@
-docker run -d \
+docker volume create pmm-data
+sudo docker run -d \
   -p 80:80 -p 443:443 \
-  --volumes-from pmm-data \
+  -v pmm-data:/srv \
   --name pmm-server \
   --restart always \
   percona/pmm-server:2
+
