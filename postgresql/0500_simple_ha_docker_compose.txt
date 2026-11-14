@@ -43,25 +43,24 @@ services:
     networks:
       - postgres-net
 
-  pgbouncer:
-    image: edoburu/pgbouncer:latest
-    container_name: pgbouncer
-    restart: unless-stopped
-    ports:
-      - "6432:6432"
-    environment:
-      POSTGRESQL_HOST: postgres-primary
-      POSTGRESQL_PORT: 5432
-      POSTGRESQL_USERNAME: postgres
-      POSTGRESQL_PASSWORD: postgres
-      PGBOUNCER_DATABASE: postgres
-      PGBOUNCER_POOL_MODE: transaction
-      PGBOUNCER_MAX_CLIENT_CONN: 1000
-      PGBOUNCER_DEFAULT_POOL_SIZE: 25
-    depends_on:
-      - postgres-primary
-    networks:
-      - postgres-net
+pgbouncer:
+  image: edoburu/pgbouncer
+  container_name: pgbouncer
+  restart: unless-stopped
+  ports:
+    - "6432:6432"
+  environment:
+    DB_HOST: postgres-primary
+    DB_PORT: 5432
+    DB_USER: postgres
+    DB_PASSWORD: postgres
+    POOL_MODE: transaction
+    MAX_CLIENT_CONN: 1000
+    DEFAULT_POOL_SIZE: 25
+  depends_on:
+    - postgres-primary
+  networks:
+    - postgres-net
 
 volumes:
   primary-data:
