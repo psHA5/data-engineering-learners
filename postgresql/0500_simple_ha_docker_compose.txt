@@ -44,7 +44,7 @@ services:
       - postgres-net
 
   pgbouncer:
-    image: bitnami/pgbouncer:latest
+    image: edoburu/pgbouncer:latest
     container_name: pgbouncer
     restart: unless-stopped
     ports:
