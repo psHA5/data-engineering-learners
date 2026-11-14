@@ -22,7 +22,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - primary-data:/var/lib/postgresql/data
+      - primary-data:/var/lib/postgresql
       - ./primary/init:/docker-entrypoint-initdb.d
     networks:
       - postgres-net
@@ -37,7 +37,7 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - replica-data:/var/lib/postgresql/data
+      - replica-data:/var/lib/postgresql
     depends_on:
       - postgres-primary
     networks:
