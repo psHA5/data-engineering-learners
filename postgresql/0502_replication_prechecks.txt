@@ -1,6 +1,5 @@
 -- primary
 
-
 SELECT
     application_name,
     client_addr,
@@ -10,3 +9,11 @@ SELECT
     flush_lag,
     replay_lag
 FROM pg_stat_replication;
+
+
+-- replica
+
+SELECT
+    pg_is_in_recovery(),
+    pg_last_wal_receive_lsn(),
+    pg_last_wal_replay_lsn();
