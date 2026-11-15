@@ -3,3 +3,4 @@
 SHOW wal_level;
 SHOW max_wal_senders;
 SHOW max_replication_slots;
+show hot_standby;
