@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse
+    restart: unless-stopped
+
+    ports:
+      - "8123:8123"   # HTTP interface
+      - "9000:9000"   # Native client protocol
+
+    environment:
+      CLICKHOUSE_DB: reporting
+      CLICKHOUSE_USER: admin
+      CLICKHOUSE_PASSWORD: changeme
+      CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1
+
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+      - clickhouse_logs:/var/log/clickhouse-server
+
+volumes:
+  clickhouse_data:
+  clickhouse_logs:
